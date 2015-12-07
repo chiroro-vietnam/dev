@@ -119,19 +119,47 @@
       </tr>
       <tr>
         <td width="20%" class="col3">外部バックアップ</td>
-        <td><select name="op_backup">
-          <option value="申し込まない" selected="selected">申し込まない</option>
-          <option value="申し込む（毎朝／一世代保存）●初5,000円／月300円">申し込む（毎朝／一世代保存）●初5,000円／月300円</option>
-          <option value="申し込む（毎朝／二世代保存）●初10,000円／月600円">申し込む（毎朝／二世代保存）●初10,000円／月600円</option>
-          <option value="申し込む（毎朝／三世代保存）●初15,000円／月900円">申し込む（毎朝／三世代保存）●初15,000円／月900円</option>
-        </select></td>
+        <td>
+            <select name="op_backup">
+            <option value="申し込まない" selected="selected">申し込まない</option>
+            <?php 
+                $arr_op_backup = array(                   
+                    '申し込む（毎朝／一世代保存）●初5,000円／月300円' => '申し込む（毎朝／一世代保存）●初5,000円／月300円',
+                    '申し込む（毎朝／二世代保存）●初10,000円／月600円' => '申し込む（毎朝／二世代保存）●初10,000円／月600円',
+                    '申し込む（毎朝／三世代保存）●初15,000円／月900円' => '申し込む（毎朝／三世代保存）●初15,000円／月900円'
+                ); 
+                foreach($arr_op_backup as $op_backup => $value) 
+                {                 
+                   echo '<option value="'. $value .'"';
+                   if(!empty($data_old['op_backup']) && $data_old['op_backup'] == $value){
+                        echo ' selected="selected"';
+                   }                           
+                    echo '>'. $value .'</option>';
+                }
+            ?>
+            </select>        
+        </td>
       </tr>
       <tr>
         <td width="20%" class="col3">ファイアウォール</td>
-        <td><select name="op_firewall">
-          <option value="申し込まない" selected="selected">申し込まない</option>
-          <option value="申し込む●初10,000円／月5,000円">申し込む●初10,000円／月5,000円</option>
-        </select></td>
+        <td>
+            <select name="op_firewall">
+            <option value="申し込まない" selected="selected">申し込まない</option>
+            <?php 
+                $arr_op_firewall = array(                   
+                    '申し込む●初10,000円／月5,000円' => '申し込む●初10,000円／月5,000円'                   
+                ); 
+                foreach($arr_op_firewall as $op_firewall => $value)
+                {                 
+                   echo '<option value="'. $value .'"';
+                   if(!empty($data_old['op_firewall']) && $data_old['op_firewall'] == $value){
+                        echo ' selected="selected"';
+                   }                           
+                    echo '>'. $value .'</option>';
+                }
+            ?>
+            </select>        
+        </td>
       </tr>
       <tr>
         <td width="20%" class="col3">SSL証明書</td>
@@ -145,28 +173,70 @@
       </tr>
       <tr>
         <td width="20%" class="col3">OS</td>
-        <td><select name="OS">
-          <option value="Debian GNU/Linux 6" selected="selected">Debian GNU/Linux 6</option>
-          <option value="CentOS 6">CentOS 6</option>
-        </select></td>
+        <td>
+            <select name="OS">
+            <option value="Debian GNU/Linux 6" selected="selected">Debian GNU/Linux 6</option>
+            <?php 
+                $arr_OS = array(                   
+                    'CentOS 6' => 'CentOS 6'                   
+                ); 
+                foreach($arr_OS as $OS => $value)
+                {                 
+                   echo '<option value="'. $value .'"';
+                   if(!empty($data_old['OS']) && $data_old['OS'] == $value){
+                        echo ' selected="selected"';
+                   }                           
+                    echo '>'. $value .'</option>';
+                }
+            ?>
+            </select>        
+        </td>
       </tr>
       <tr>
         <td width="20%" class="col3">Apache</td>
-        <td><select name="Apache">
-          <option value="Apache2.2.x" selected="selected">Apache2.2.x</option>
-          <option value="不要">不要</option>
-        </select></td>
-      </tr>
-      <tr>
+        <td>
+            <select name="Apache">
+            <option value="Apache2.2.x" selected="selected">Apache2.2.x</option>
+            <?php 
+                $arr_Apache = array(                   
+                    '不要' => '不要'                   
+                ); 
+                foreach($arr_Apache as $Apache => $value)
+                {                 
+                   echo '<option value="'. $value .'"';
+                   if(!empty($data_old['Apache']) && $data_old['Apache'] == $value){
+                        echo ' selected="selected"';
+                   }                           
+                    echo '>'. $value .'</option>';
+                }
+            ?>
+            </select>        
+        </td>
+    </tr>
+    <tr>
         <td width="20%" class="col3">PHP</td>
-        <td><select name="PHP">
-          <option value="PHP5.2.x">PHP5.2.x</option>
-          <option value="PHP5.3.x" selected="selected">PHP5.3.x</option>
-          <option value="PHP5.4.x">PHP5.4.x</option>
-          <option value="PHP5.5.x">PHP5.5.x</option>
-          <option value="PHP5.6.x">PHP5.6.x</option>
-          <option value="不要">不要</option>
-        </select></td>
+        <td>
+            <select name="PHP">
+                <option value="PHP5.3.x" selected="selected">PHP5.3.x</option>
+            <?php 
+                $arr_PHP = array(
+                    'PHP5.2.x' => 'PHP5.2.x',
+                    'PHP5.4.x' => 'PHP5.4.x',
+                    'PHP5.5.x' => 'PHP5.5.x',
+                    'PHP5.6.x' => 'PHP5.6.x',
+                    '不要'      => '不要'
+                ); 
+                foreach($arr_PHP as $PHP => $value)
+                {                 
+                   echo '<option value="'. $value .'"';
+                   if(!empty($data_old['PHP']) && $data_old['PHP'] == $value){
+                        echo ' selected="selected"';
+                   }                           
+                    echo '>'. $value .'</option>';
+                }
+            ?>
+            </select>        
+        </td>
       </tr>
       <tr>
         <td width="20%" class="col3">MySQL</td>
@@ -178,11 +248,25 @@
       </tr>
       <tr>
         <td width="20%" class="col3">Mail</td>
-        <td><select name="MTA">
-          <option value="netqmail + vpopmail + ezmlm + qmailadmin" selected="selected">netqmail + vpopmail + ezmlm + qmailadmin</option>
-          <option value="netqmail単体">netqmail単体</option>
-          <option value="不要">不要</option>
-        </select></td>
+        <td>
+            <select name="MTA">
+                <option value="netqmail + vpopmail + ezmlm + qmailadmin" selected="selected">netqmail + vpopmail + ezmlm + qmailadmin</option>
+            <?php 
+                $arr_MTA = array(
+                    'netqmail単体' => 'netqmail単体',
+                    '不要' => '不要'                   
+                ); 
+                foreach($arr_MTA as $MTA => $value)
+                {                 
+                   echo '<option value="'. $value .'"';
+                   if(!empty($data_old['MTA']) && $data_old['MTA'] == $value){
+                        echo ' selected="selected"';
+                   }                           
+                    echo '>'. $value .'</option>';
+                }
+            ?>
+            </select>        
+        </td>
       </tr>
       <tr>
         <td width="20%" rowspan="7" class="col3">アクセス許可制限</td>
@@ -316,7 +400,7 @@
       </tr>
       <tr>
         <td width="20%" class="col3">伝言メモ</td>
-        <td><textarea name="message" cols="80" rows="5" value="<?php echo !empty($data_old['message']) ? $data_old['message'] : '' ;?>"></textarea></td>
+        <td><textarea name="message" cols="80" rows="5" value="<?php echo !empty($data_old['message']) ? $data_old['message'] : '' ;?>"><?php echo !empty($data_old['message']) ? $data_old['message'] : '' ;?></textarea></td>
       </tr>
     </table></td>
   </tr>
